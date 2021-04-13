@@ -4,7 +4,11 @@ import Cart from "./cart";
 const Products = () => {
   return (
     <>
-      <div></div>
+      <div>
+        <p>Product title</p>
+        <p>Product image</p>
+        <p>Add to cart</p>
+      </div>
       <Cart />
     </>
   );

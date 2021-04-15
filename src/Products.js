@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import Cart from "./cart";
 
 const Products = () => {
-  const [products, setProducts] = useState([
+  const [cartNumber, setCartNumber] = useState(0);
+  const [cartItem, setCartItem] = useState([]);
+  const [products] = useState([
     {
       title: "Peru Hair",
       image: "https://p.globalsources.com/IMAGES/PDT/BIG/349/B1173831349.jpg",
@@ -37,6 +39,15 @@ const Products = () => {
     marginRight: "25px"
   };
 
+  const handleClick = (item) => {
+    let itemNumber = cartNumber;
+    setCartNumber(itemNumber + 1);
+    let items = cartItem.concat(item);
+    setCartItem(items);
+  };
+
+  console.log(cartItem);
+
   return (
     <>
       <div
@@ -48,18 +59,22 @@ const Products = () => {
       >
         {products.map((product, i) => (
           <div key={i}>
-            <img src={product.image} style={imageStyles} />
+            <img src={product.image} style={imageStyles} alt={product.title} />
             <div>
               <span style={spanFlex}>{product.title}</span>
               <span>{product.price}</span>
             </div>
-            <button type="submit" style={{ marginTop: "15px" }}>
+            <button
+              type="submit"
+              style={{ marginTop: "15px" }}
+              onClick={() => handleClick(product)}
+            >
               Add to Cart
             </button>
           </div>
         ))}
       </div>
-      <Cart />
+      <Cart totalItems={cartNumber} items={cartItem} />
     </>
   );
 };

@@ -46,11 +46,15 @@ const Products = () => {
   const handleClick = (item) => {
     let itemNumber = cartNumber;
     setCartNumber(itemNumber + 1);
+    let itemCount = item.count;
+
     let items = cartItem.concat(item);
+    if (items.length - 1 === item) {
+      console.log(itemCount + 1);
+    }
+    console.log((itemCount += 1));
     setCartItem(items);
   };
-
-  console.log(cartItem);
 
   return (
     <>

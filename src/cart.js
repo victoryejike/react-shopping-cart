@@ -1,10 +1,26 @@
 import React from "react";
 
 const Cart = ({ totalItems, items }) => {
+  const total = () => {
+    //console.log(items)
+    items.map((item) => {
+      let value = Object.values(item.price);
+      let prices = value.join("");
+      let newArr = [];
+      newArr.push(prices);
+      console.log(newArr);
+    });
+  };
+  total();
+
   return (
     <>
-      <div>
-        <p>Cart Items {totalItems}</p>
+      <div style={{ marginTop: "20px" }}>
+        {items.length < 1 ? (
+          `You have no items in your cart`
+        ) : (
+          <p>Cart Items {totalItems}</p>
+        )}
       </div>
 
       <div>
@@ -12,7 +28,13 @@ const Cart = ({ totalItems, items }) => {
           <li key={i}>{item.title} </li>
         ))}
       </div>
-      <div>Total Price of goods </div>
+      <div style={{ marginTop: "20px" }}>
+        {items.length < 1 ? (
+          `Total Price of goods $0.00`
+        ) : (
+          <p>Total Price of goods </p>
+        )}
+      </div>
     </>
   );
 };

@@ -1,4 +1,4 @@
-//import "./styles.css";
+import "./styles.css";
 import Products from "./Products";
 
 export default function App() {

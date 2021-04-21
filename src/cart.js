@@ -7,8 +7,8 @@ const Cart = ({ totalItems, items }) => {
       let value = Object.values(item.price);
       let prices = value.join("");
       let newArr = [];
-      newArr.push(prices);
-      console.log(newArr);
+      return newArr.push(prices);
+      
     });
   };
   total();

@@ -46,7 +46,10 @@ const Products = () => {
   const handleClick = (item) => {
     let itemNumber = cartNumber;
     setCartNumber(itemNumber + 1);
-
+    let duplicate = cartItem.find((cart) => {
+      return cart.title === item.title ? true : false;
+    });
+    console.log(duplicate);
     let items = cartItem.concat(item);
 
     setCartItem(items);

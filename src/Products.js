@@ -43,13 +43,19 @@ const Products = () => {
     marginRight: "25px"
   };
 
+  const findDuplicate = (cartArr, item) => {
+    if(cartArr.length < 1) return
+    const duplicate = cartArr.find(cart=>cart.title === item.title)
+    if(duplicate === undefined) return 
+    else item.count++
+  }
+
   const handleClick = (item) => {
+    findDuplicate();
+    let count = item.count++;
     let itemNumber = cartNumber;
     setCartNumber(itemNumber + 1);
-    let duplicate = cartItem.find((cart) => {
-      return cart.title === item.title ? true : false;
-    });
-    console.log(duplicate);
+    
     let items = cartItem.concat(item);
 
     setCartItem(items);

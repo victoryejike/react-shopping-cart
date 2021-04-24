@@ -8,7 +8,6 @@ const Cart = ({ totalItems, items }) => {
       let prices = value.join("");
       let newArr = [];
       return newArr.push(prices);
-      
     });
   };
   total();
@@ -17,7 +16,7 @@ const Cart = ({ totalItems, items }) => {
     <>
       <div style={{ marginTop: "20px" }}>
         {items.length < 1 ? (
-          `You have no items in your cart`
+          `You have no item(s) in your cart`
         ) : (
           <p>Cart Items {totalItems}</p>
         )}
@@ -25,7 +24,9 @@ const Cart = ({ totalItems, items }) => {
 
       <div>
         {items.map((item, i) => (
-          <li key={i}>{item.title} </li>
+          <li key={i}>
+            {item.title} {item.count}
+          </li>
         ))}
       </div>
       <div style={{ marginTop: "20px" }}>

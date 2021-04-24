@@ -44,23 +44,30 @@ const Products = () => {
   };
 
   const findDuplicate = (cartArr, item) => {
-    if(cartArr.length < 1) return
-    const duplicate = cartArr.find(cart=>cart.title === item.title)
-    if(duplicate === undefined) return 
-    else item.count++
-  }
-
-  const handleClick = (item) => {
-    findDuplicate();
-    let count = item.count++;
-    let itemNumber = cartNumber;
-    setCartNumber(itemNumber + 1);
-    
-    let items = cartItem.concat(item);
-
-    setCartItem(items);
+    if (cartArr.length < 1) return;
+    const duplicate = cartArr.find((cart) => cart.title === item.title);
+    if (duplicate) {
+      console.log(duplicate);
+      console.log("already exists");
+      let remove = cartArr.pop();
+      setCartItem(remove);
+    } else {
+      return;
+    }
   };
 
+  const handleClick = (item) => {
+    console.log("work");
+    let itemNumber = cartNumber;
+    setCartNumber(itemNumber + 1);
+    item.count += 1;
+
+    findDuplicate(cartItem, item);
+
+    let items = cartItem.concat(item);
+    setCartItem(items);
+  };
+  console.log(cartItem);
   return (
     <>
       <div

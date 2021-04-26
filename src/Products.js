@@ -47,8 +47,8 @@ const Products = () => {
     if (cartArr.length < 1) return;
     const duplicate = cartArr.find((cart) => cart.title === item.title);
     if (duplicate) {
-      console.log(duplicate);
-      console.log("already exists");
+      //console.log(duplicate);
+      //console.log("already exists");
       let remove = cartArr.pop();
       setCartItem(remove);
     } else {
@@ -57,7 +57,7 @@ const Products = () => {
   };
 
   const handleClick = (item) => {
-    console.log("work");
+    // console.log("work");
     let itemNumber = cartNumber;
     setCartNumber(itemNumber + 1);
     item.count += 1;
@@ -67,7 +67,7 @@ const Products = () => {
     let items = cartItem.concat(item);
     setCartItem(items);
   };
-  console.log(cartItem);
+  //console.log(cartItem);
   return (
     <>
       <div

@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const Cart = ({ totalItems, items }) => {
-  const [priceTotal, setTotalPrice] = useState();
+  const mapItems = items.map((item) => item.price * item.count);
 
-  function total() {
-    console.log("i");
-  }
+  const totalArr = () => {
+    console.log(mapItems);
+    let total = [];
+    total.concat(mapItems);
+    console.log(total);
+  };
 
+  totalArr();
   return (
     <>
       <div style={{ marginTop: "20px" }}>
@@ -31,7 +35,7 @@ const Cart = ({ totalItems, items }) => {
         ))}
       </div>
       <div style={{ marginTop: "20px" }}>
-        {items.length < 1 ? `Total Price of goods $0.00` : total()}
+        {items.length < 1 ? `Total Price of goods $0.00` : ""}
       </div>
     </>
   );

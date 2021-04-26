@@ -36,7 +36,7 @@ const Cart = ({ totalItems, items }) => {
             <span style={{ marginLeft: "12px" }}>{item.count}</span>
             {
               <span style={{ marginLeft: "20px" }}>
-                {item.price * item.count}
+                $ {item.price * item.count}
               </span>
             }
           </li>

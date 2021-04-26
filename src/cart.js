@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const Cart = ({ totalItems, items }) => {
   const mapItems = items.map((item) => item.price * item.count);
@@ -6,11 +6,19 @@ const Cart = ({ totalItems, items }) => {
   const totalArr = () => {
     console.log(mapItems);
     let total = [];
-    total.concat(mapItems);
-    console.log(total);
+    let setTotal = total.concat(mapItems);
+    console.log(setTotal);
+    return setTotal;
   };
 
-  totalArr();
+  const cartTotal = () => {
+    let cartPriceArr = totalArr();
+    if (cartPriceArr < 1) return;
+    let totalCartPrice = cartPriceArr.reduce((acc, currVal) => acc + currVal);
+    console.log(totalCartPrice);
+    return totalCartPrice;
+  };
+
   return (
     <>
       <div style={{ marginTop: "20px" }}>
@@ -35,7 +43,9 @@ const Cart = ({ totalItems, items }) => {
         ))}
       </div>
       <div style={{ marginTop: "20px" }}>
-        {items.length < 1 ? `Total Price of goods $0.00` : ""}
+        {items.length < 1
+          ? `Total Price of goods $0.00`
+          : "Total Price is $ " + cartTotal()}
       </div>
     </>
   );
